@@ -1,7 +1,7 @@
-@import url(https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700);
+@import url(https://fonts.googleapis.com/css?family=Noto+Sans+TC:100,300,regular,500,700,900);
 
 body {
-  font-family: Poppins;
+  font-family: NOTO SANS TC;
   font-style: normal;
   line-height: 1.5;
 }
@@ -1704,8 +1704,8 @@ body {
   }
 }
 .cid-rhK06oGvis {
-  padding-top: 75px;
-  padding-bottom: 0px;
+  padding-top: 0px;
+  padding-bottom: 350px;
   background-color: #eeeeee;
 }
 .cid-rhJPmkSdDF {
