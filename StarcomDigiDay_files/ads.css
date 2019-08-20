@@ -19,7 +19,7 @@ body, body * {
   height: 100%;
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: 50% 50%;
+  background-position: 30% 50%;
 
   background-image: url(asset/starcom_banner.jpg);
 }
@@ -45,7 +45,7 @@ body, body * {
 #title
 {
   left: 40%;
-  top: 25%;
+  top: 35%;
   position: relative;
   font-size: 100%;
 }
