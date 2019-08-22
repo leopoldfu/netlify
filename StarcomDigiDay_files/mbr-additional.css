@@ -21,23 +21,23 @@ strong {
   line-height: 1.6;
 }
 .display-1 {
-  font-family: 'ClanPro-Black';
+  font-family: NOTO SANS TC;
   font-size: 4.25rem;
 }
 .display-2 {
-  font-family: 'ClanPro-Black';
+  font-family: NOTO SANS TC;
   font-size: 3rem;
 }
 .display-4 {
-  font-family: 'ClanPro-Black';
+  font-family: NOTO SANS TC;
   font-size: 0.875rem;
 }
 .display-5 {
-  font-family: 'Poppins', sans-serif;
+  font-family: NOTO SANS TC;
   font-size: 1.5rem;
 }
 .display-7 {
-  font-family: 'ClanPro-Book';
+  font-family: NOTO SANS TC;
   font-size: 1.06rem;
 }
 /* ---- Fluid typography for mobile devices ---- */
