@@ -5,6 +5,10 @@ body {
   font-style: normal;
   line-height: 1.5;
 }
+strong {
+  font-family: NOTO SANS TC;
+  font-style: normal;
+}
 .mbr-section-title {
   font-style: normal;
   line-height: 1.2;
