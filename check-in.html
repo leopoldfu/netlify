@@ -11,10 +11,31 @@
 <body>
 	<div class="container-fluid" style="height:100%">
         <div class="d-flex flex-row justify-content-center align-items-center" style="height:100%">
-          <h1 id="txt1">報名成功</h1>  
+          <h1 id="txt1" style="text-align: center; font-size: 42px; line-height: 50px; position: relative; top: -13%; color: #000000"></h1>
+          <img id="model" style="position: absolute; right: 0%; bottom: 0%; width: 100%; height: auto; z-index: -999" src="">
+          <img id="product" style="position: absolute; left: 0%; bottom: 0%; width: 30%; height: auto" src="">  
         </div>
     </div>
 
-<script type="text/javascript" src="index.bundle.js"></script></body>
+<script type="text/javascript" src="index.bundle.js"></script>
+<script type="text/javascript">
+	var param = new URLSearchParams(window.location.search);
+	var colorcode = param.get('id');
+	if (colorcode == 1) {
+		var colorname = "蜂蜜色";
+	} else if (colorcode == 2){
+		var colorname = "粉紅色";
+	} else if (colorcode == 3) {
+		var colorname = "霧棕色";
+	}
+	console.log(colorname);
+	function changeColor(){
+		document.getElementById("txt1").innerHTML = "你預約了<br>" + colorname +"染髮";
+		document.getElementById("model").src = "images/" + colorcode + ".png";
+		document.getElementById("product").src = "images/" + colorcode + "p.png";
+	}
+changeColor();
+
+</script></body>
 
 </html>
