@@ -11,7 +11,7 @@
 <body>
 	<div class="container-fluid" style="height:156%">
         <div class="d-flex flex-row justify-content-center align-items-center" style="height:100%">
-          <h1 id="txt1" style="text-align: center; font-size: 24px; line-height: 30px; position: absolute; top: 12%; color: #000000"></h1>
+          <h1 id="txt1" style="text-align: center; font-size: 24px; line-height: 30px; position: absolute; top: 10%; color: #000000"></h1>
           <img id="model" style="position: absolute; right: 0%; bottom: -56%; width: 100%; height: auto; z-index: -999" src="">
           <img id="logo" style="position: absolute; margin-left:-15%; left: 50%; top: 2%; width: 30%; height: auto" src="images/top-logo.png">  
         </div>
@@ -30,7 +30,7 @@
 	}
 	console.log(colorname);
 	function changeColor(){
-		document.getElementById("txt1").innerHTML = "妳成功預約了<br>《 美芯研 時尚彩染快閃店》<br><br>免漂保養染！<br>讓妳輕鬆擁有" + colorname + "色<br>#美芯研 #beautylabo";
+		document.getElementById("txt1").innerHTML = "妳成功預約了<br>《 美芯研 時尚彩染快閃店 》<br><br>免漂保養染！<br>讓妳輕鬆擁有" + colorname + "色<br>#美芯研 #beautylabo";
 		document.getElementById("model").src = "images/" + colorcode + ".png";
 		document.getElementById("product").src = "images/" + colorcode + "p.png";
 	}
