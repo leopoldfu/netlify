@@ -11,7 +11,7 @@
 
       function drawDemoVisualization() {
         // Some raw data (not necessarily accurate)
-        var data = google.visualization.arrayToDataTable([
+        var data1 = google.visualization.arrayToDataTable([
           ['Month', 'Bolivia', 'Ecuador', 'Madagascar', 'Papua New Guinea', 'Rwanda', 'Average'],
           ['2004/05',  165,      938,         522,             998,           450,      614.6],
           ['2005/06',  135,      1120,        599,             1268,          288,      682],
@@ -29,16 +29,16 @@
         };
 
         var chart = new google.visualization.ComboChart(document.getElementById('demochart_div'));
-        chart.draw(data, options);
+        chart.draw(data1, options);
       }
       // Callback that draws the pie chart for Sarah's pizza.
       function drawSarahChart() {
 
         // Create the data table for Sarah's pizza.
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Topping');
-        data.addColumn('number', 'Slices');
-        data.addRows([
+        var data2 = new google.visualization.DataTable();
+        data2.addColumn('string', 'Topping');
+        data2.addColumn('number', 'Slices');
+        data2.addRows([
           ['Mushrooms', 1],
           ['Onions', 1],
           ['Olives', 2],
@@ -53,8 +53,9 @@
 
         // Instantiate and draw the chart for Sarah's pizza.
         var chart = new google.visualization.PieChart(document.getElementById('Sarah_chart_div'));
-        chart.draw(data, options);
+        chart.draw(data2, options);
       }
+      // Callback that draws timeline chart.
       function drawTimeLineChart() {
         var container = document.getElementById('timeline');
         var chart = new google.visualization.Timeline(container);
