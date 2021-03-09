@@ -27,7 +27,7 @@
           series: {5: {type: 'line'}}
         };
 
-        var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+        var chart = new google.visualization.ComboChart(document.getElementById('demochart_div'));
         chart.draw(data, options);
       }
       // Callback that draws the pie chart for Sarah's pizza.
@@ -57,6 +57,11 @@
     </script>
   </head>
   <body>
-    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+    <table class="columns">
+      <tr>
+        <td><div id="demochart_div" style="width: 900px; height: 500px;"></div></td>
+        <td><div id="Sarah_chart_div" style="width: 900px; height: 500px;"></div></td>
+      </tr>
+    </table>
   </body>
 </html>
