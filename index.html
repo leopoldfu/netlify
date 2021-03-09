@@ -2,12 +2,14 @@
   <head>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart','timeline']});
+      google.charts.load('current', {'packages':['corechart','timeline','line']});
       // Draw the Demochart when Charts is loaded.
       google.charts.setOnLoadCallback(drawDemoVisualization);
       // Draw the pie chart for Sarah's pizza when Charts is loaded.
       google.charts.setOnLoadCallback(drawSarahChart);
       google.charts.setOnLoadCallback(drawTimeLineChart);
+      google.charts.setOnLoadCallback(drawLineChart);;
+  
 
       function drawDemoVisualization() {
         // Some raw data (not necessarily accurate)
@@ -26,7 +28,7 @@
           hAxis: {title: 'Month'},
           seriesType: 'bars',
           series: {5: {type: 'line'}},
-          is3D: true
+          crosshair: { trigger: 'both' }
         };
 
         var chart = new google.visualization.ComboChart(document.getElementById('demochart_div'));
@@ -73,7 +75,8 @@
 
         chart.draw(dataTable);
       }
-       function drawLineChart(){
+      
+      function drawLineChart(){
       var data = new google.visualization.DataTable();
       data.addColumn('number', 'Day');
       data.addColumn('number', 'Guardians of the Galaxy');
