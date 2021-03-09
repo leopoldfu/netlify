@@ -2,11 +2,12 @@
   <head>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
+      google.charts.load('current', {'packages':['corechart','timeline']});
       // Draw the Demochart when Charts is loaded.
       google.charts.setOnLoadCallback(drawDemoVisualization);
       // Draw the pie chart for Sarah's pizza when Charts is loaded.
       google.charts.setOnLoadCallback(drawSarahChart);
+      google.charts.setOnLoadCallback(drawTimeLineChart);
 
       function drawDemoVisualization() {
         // Some raw data (not necessarily accurate)
