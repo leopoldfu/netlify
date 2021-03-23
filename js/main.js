@@ -1,48 +1,63 @@
 $(window).resize(function(){
-  		drawDemoVisualization();
-  		drawSarahChart();
-  		drawTimeLineChart();
-  		drawLineChart();
-		});
-      google.charts.load('current', {'packages':['corechart','timeline','line']});
+      drawDemoVisualization();
+      drawSarahChart();
+      drawTimeLineChart();
+      drawLineChart();
+      drawDailyTraffic();
+    });
+      google.charts.load('current', {'packages':['corechart','line']});
       // Draw the Demochart when Charts is loaded.
-      google.charts.setOnLoadCallback(drawDemoVisualization);
+      google.charts.setOnLoadCallback(drawDailyTraffic);
       // Draw the pie chart for Sarah's pizza when Charts is loaded.
       google.charts.setOnLoadCallback(drawSarahChart);
       google.charts.setOnLoadCallback(drawTimeLineChart);
-      google.charts.setOnLoadCallback(drawLineChart);;
-  
+      google.charts.setOnLoadCallback(drawLineChart);
+      
+      function drawDailyTraffic() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('date', '日期');
+      data.addColumn('number', 'Google Display');
+      data.addColumn('number', 'EDM');
+      data.addColumn('number', 'Facebook');
+      data.addColumn('number', 'Line');
+      data.addColumn('number', 'Others');
 
-      function drawDemoVisualization() {
-        // Some raw data (not necessarily accurate)
-        var data1 = google.visualization.arrayToDataTable([
-          ['Month', 'Bolivia', 'Ecuador', 'Madagascar', 'Papua New Guinea', 'Rwanda', 'Average'],
-          ['2004/05',  165,      938,         522,             998,           450,      614.6],
-          ['2005/06',  135,      1120,        599,             1268,          288,      682],
-          ['2006/07',  157,      1167,        587,             807,           397,      623],
-          ['2007/08',  139,      1110,        615,             968,           215,      609.4],
-          ['2008/09',  136,      691,         629,             1026,          366,      569.6]
-        ]);
+      data.addRows([
+        [new Date(2021,2,11), 1234, 312, 987,572,132],
+        [new Date(2021,2,12), 1728, 314, 912,583,148],
+        [new Date(2021,2,13), 1553, 332, 932,501,173],
+        [new Date(2021,2,14), 1456, 389, 966,583,129],
+        [new Date(2021,2,15), 1123, 377, 950,577,104],
+        [new Date(2021,2,16), 1267, 342, 959,548,166],
+        [new Date(2021,2,17), 1272, 375, 982,532,172],
+        [new Date(2021,2,18), 1948, 382, 965,587,182],
+        [new Date(2021,2,19), 1127, 359, 945,590,194],
+        [new Date(2021,2,20), 1387, 301, 923,572,101],
+        [new Date(2021,2,21), 1848, 338, 909,559,110],
+      ]);
 
-        var options = {
-          title : 'Monthly Coffee Production by Country',
-          vAxis: {title: 'Cups'},
-          hAxis: {title: 'Month'},
-          seriesType: 'bars',
-          series: {5: {type: 'line'}},
-          crosshair: { trigger: 'both' },
-          animation:{
-        	duration: 1000,
-        	easing: 'out',
-        	startup: true
-      		}
-        };
+      var options = {
+        height: 400,
+        hAxis: {
+          title: '日期'
+        },
+        vAxis: {
+          title: '流量',
+          
+        },
+        legend: {
+          position: 'bottom'
+        },
+        chartArea: {width: '80%', height: '70%'},
+      };
+      var chart1 = new google.visualization.LineChart(document.getElementById('demochart_div'));
+      chart1.draw(data, options);
+      var chart2 = new google.visualization.LineChart(document.getElementById('demochart_div2'));
+      chart2.draw(data, options);
+    }
 
-        var chart1 = new google.visualization.ComboChart(document.getElementById('demochart_div'));
-        var chart2 = new google.visualization.ComboChart(document.getElementById('demochart_div2'));
-        chart1.draw(data1, options);
-        chart2.draw(data1, options);
-      }
+    
+      
       // Callback that draws the pie chart for Sarah's pizza.
       function drawSarahChart() {
 
@@ -60,6 +75,7 @@ $(window).resize(function(){
 
         // Set options for Sarah's pie chart.
         var options = {title:'How Much Pizza Sarah Ate Last Night',
+                       height:400,
                        is3D: true};
 
         // Instantiate and draw the chart for Sarah's pizza.
@@ -118,4 +134,36 @@ $(window).resize(function(){
       var chart = new google.charts.Line(document.getElementById('line_chart'));
 
       chart.draw(data, google.charts.Line.convertOptions(options));
+      }
+
+      function drawDemoVisualization() {
+        // Some raw data (not necessarily accurate)
+        var data1 = google.visualization.arrayToDataTable([
+          ['日期', 'EDM', 'Google Display', 'Facebook', 'Line', 'Google Search', 'Others'],
+          ['03/11',  165,      938,         522,             998,           450,      614.6],
+          ['03/12',  135,      1120,        599,             1268,          288,      682],
+          ['03/13',  157,      1167,        587,             807,           397,      623],
+          ['03/14',  139,      1110,        615,             968,           215,      609.4],
+          ['03/15',  136,      691,         629,             1026,          366,      569.6]
+        ]);
+
+        var options = {
+          title : '每日進站流量',
+          vAxis: {title: '流量'},
+          hAxis: {title: '日期'},
+          seriesType: 'bars',
+          series: {5: {type: 'line'}},
+          crosshair: { trigger: 'both' },
+          height:400,
+          animation:{
+          duration: 1000,
+          easing: 'out',
+          startup: true
+          }
+        };
+
+        var chart1 = new google.visualization.ComboChart(document.getElementById('none'));
+        var chart2 = new google.visualization.ComboChart(document.getElementById('none'));
+        chart1.draw(data1, options);
+        chart2.draw(data1, options);
       }

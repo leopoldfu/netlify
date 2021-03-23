@@ -90,30 +90,21 @@ body {
 	flex-direction: row; 
 	margin: 0%; 
 	text-align: center;
-	padding-bottom: 5%;
 }
 #chart_area_1 {
 	display: flex; 
 	flex-direction: row;
-	padding-bottom: 5%;
 }
 #chart_area_2 {
 	display: flex; 
 	flex-direction: row;
-	padding-bottom: 5%;
 }
 #timeline {
-	padding-bottom: 5%;
-	width: 90%;
-	height:30%; 
-	position: relative;
+	width: 100%; 
 	left: 5%;
 }
 #line_chart {
-	padding-bottom: 5%;
-	width: 90%;
-	height:30%; 
-	position: relative;
+	width: 100%;
 	left: 5%;
 }
 

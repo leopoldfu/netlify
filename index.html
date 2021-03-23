@@ -4,9 +4,9 @@
     <link rel="stylesheet" href="style/style.css">
     <title>博斯數據</title>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
-	<script type="text/javascript"src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
-	<script type="text/javascript"src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
+	<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+	<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
   </head>
   <body>
@@ -42,33 +42,38 @@
   				</div>
   				<div class="scoreboard">
   					<div id="scw3" class="scorewrap">
-  						<div id="sc3" class="score1">進站數</div>
-  						<div id="sc3v" class="score2">0.13%</div>
+  						<div id="sc3" class="score1">進站人數</div>
+  						<div id="sc3v" class="score2">98,442</div>
   					</div>
   				</div>
   				<div class="scoreboard">
   					<div id="scw4" class="scorewrap">
   						<div id="sc4" class="score1">轉換數</div>
-  						<div id="sc4v" class="score2">0.13%</div>
+  						<div id="sc4v" class="score2">2,038</div>
   					</div>
   				</div>
   				<div class="scoreboard">
   					<div id="scw5" class="scorewrap">
   						<div id="sc5" class="score1">費用</div>
-  						<div id="sc5v" class="score2">0.13%</div>
+  						<div id="sc5v" class="score2">NT$598,132</div>
   					</div>
   				</div>
   			</div>
     		<div id="chart_area_1" >
-    			<div id="demochart_div" style="flex:3; height: 100%; position: relative;"></div>
-				<div id="Sarah_chart_div" style="flex:2; height: 100%; position: relative;"></div>
+    			<div style="display: flex; flex-direction: column; flex:3; width: : 100%; position: relative;">
+    				<div class="chart_header" style="flex:1; text-align: center; background-color: #4287f5; color: #FFFFFF; margin: 5px;">每日進站流量</div>
+    				<div id="demochart_div" style="flex:9;font-size: 0.5em;"></div>
+    			</div>
+    			<div style="display: flex; flex-direction: column; flex:2; width: : 100%; position: relative;">
+    				<div class="chart_header" style="flex:1; text-align: center; background-color: #4287f5; color: #FFFFFF; margin: 5px;">訪客年齡分析</div>
+					<div id="Sarah_chart_div" style="flex:9;"></div>
+				</div>
 			</div>
 			<div id="chart_area_2" >
     			<div id="demochart_div2" style="flex:3; height: 100%; position: relative;"></div>
 				<div id="Sarah_chart_div2" style="flex:2; height: 100%; position: relative;"></div>
 			</div>
 			<div id="timeline"></div>
-			<div id="line_chart"></div>
 		</div>
 	</div>
 	</body>
