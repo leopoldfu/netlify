@@ -1,17 +1,155 @@
 $(window).resize(function(){
-      drawDemoVisualization();
-      drawSarahChart();
-      drawTimeLineChart();
-      drawLineChart();
+      
+      drawAgeChart();
       drawDailyTraffic();
+      drawGenderChart();
+      drawMediaChart();
+      drawTreemapChart();
+      drawBarchart();
     });
-      google.charts.load('current', {'packages':['corechart','line']});
-      // Draw the Demochart when Charts is loaded.
+      google.charts.load('current', {'packages':['corechart','line','treemap']});
       google.charts.setOnLoadCallback(drawDailyTraffic);
-      // Draw the pie chart for Sarah's pizza when Charts is loaded.
-      google.charts.setOnLoadCallback(drawSarahChart);
-      google.charts.setOnLoadCallback(drawTimeLineChart);
-      google.charts.setOnLoadCallback(drawLineChart);
+      google.charts.setOnLoadCallback(drawAgeChart);
+      google.charts.setOnLoadCallback(drawGenderChart);
+      google.charts.setOnLoadCallback(drawMediaChart);
+      google.charts.setOnLoadCallback(drawTreemapChart);
+      google.charts.setOnLoadCallback(drawBarchart);
+
+      function drawBarchart() {
+      var data = google.visualization.arrayToDataTable([
+        ['頁面', '瀏覽數'],
+        ['分店地址',  1],
+        ['經營團隊',  1],
+        ['新品推薦',  5],
+        ['最新活動',  6],
+        ['影片介紹',  6]
+      ]);
+
+      var options = {
+        chartArea: {width: '50%'},
+        height: 400,
+        hAxis: {
+          title: '瀏覽數',
+          minValue: 0,
+          textStyle: {
+            bold: true,
+            fontSize: 12,
+            color: '#4d4d4d'
+          },
+          titleTextStyle: {
+            bold: true,
+            fontSize: 18,
+            color: '#4d4d4d'
+          }
+        },
+        vAxis: {
+          title: '頁面',
+          textStyle: {
+            fontSize: 14,
+            bold: true,
+            color: '#848484'
+          },
+          titleTextStyle: {
+            fontSize: 14,
+            bold: true,
+            color: '#848484'
+          }
+        }
+      };
+      var chart = new google.visualization.BarChart(document.getElementById('barchart'));
+      chart.draw(data, options);
+    }
+
+      function drawTreemapChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['類型', 'Parent', '互動數'],
+          ['All',  null, 0],
+          ['商品瀏覽', 'All', 0],
+          ['留言互動', 'All', 0],
+          ['網頁觀看', 'All', 0],
+          ['鞋類', '商品瀏覽', 0],
+          ['男裝類', '商品瀏覽', 0],
+          ['女裝類', '商品瀏覽', 0],
+          ['運動鞋', '鞋類', 4],
+          ['休閒鞋', '鞋類', 2],
+          ['登山鞋', '鞋類', 2],
+          ['上衣', '男裝類', 4],
+          ['長褲', '男裝類', 3],
+          ['西裝', '男裝類', 1],
+          ['洋裝', '女裝類', 6],
+          ['長裙', '女裝類', 4],
+          ['女用長褲', '女裝類', 2],
+          ['關於商品', '留言互動', 4],
+          ['售後服務', '留言互動', 8],
+          ['關於我們', '網頁觀看', 5],
+          ['品牌理念', '網頁觀看', 7],
+          ['分店地址', '網頁觀看', 15],
+          ['經營團隊', '網頁觀看', 5],
+          ['新品推薦', '網頁觀看', 6],
+          ['最新活動', '網頁觀看', 7],
+          ['影片介紹', '網頁觀看', 8]
+        ]);
+
+        tree = new google.visualization.TreeMap(document.getElementById('treemap_chart'));
+
+        tree.draw(data, {
+          minColor: '#f00',
+          midColor: '#ddd',
+          maxColor: '#0d0',
+          headerHeight: 15,
+          fontColor: 'black',
+          showScale: true,
+          height: 400,
+          generateTooltip: showStaticTooltip
+        });
+        function showStaticTooltip(row, size, value){
+        return '<div style="background:#fd9; padding:10px; border-style:solid">' +
+           '<span style="font-family:Courier"><b>' + data.getValue(row, 0) +
+           ': </b> ' + size + '</span></div>';
+      }
+      }
+      
+
+       function drawMediaChart() {
+        // Some raw data (not necessarily accurate)
+       var data = new google.visualization.DataTable();
+        data.addColumn('date', '日期');
+        data.addColumn('number', 'Google Display');
+        data.addColumn('number', 'EDM');
+        data.addColumn('number', 'Facebook');
+        data.addColumn('number', 'Line');
+        data.addColumn('number', 'Others');
+        data.addColumn('number', 'Average');
+        data.addRows([
+        [new Date(2021,2,11), 12, 2, 12,6,6,(12+2+12+6+6)/5],
+        [new Date(2021,2,12), 17, 2, 13,7,7,(17+2+13+7+7)/5],
+        [new Date(2021,2,13), 15, 3, 12,6,7,(15+3+12+6+7)/5],
+        [new Date(2021,2,14), 15, 3, 13,5,6,(15+3+13+5+6)/5],
+        [new Date(2021,2,15), 12, 2, 14,5,5,(12+2+14+5+5)/5],
+        [new Date(2021,2,16), 12, 1, 14,6,6,(12+1+14+6+6)/5],
+        [new Date(2021,2,17), 13, 2, 14,7,7,(13+2+14+7+7)/5],
+        [new Date(2021,2,18), 20, 2, 13,6,7,(20+2+13+6+7)/5],
+        [new Date(2021,2,19), 11, 2, 12,7,8,(11+2+12+7+8)/5],
+        [new Date(2021,2,20), 14, 1, 11,6,5,(14+1+11+6+5)/5],
+        [new Date(2021,2,21), 18, 2, 12,7,6,(18+2+12+7+6)/5],
+      ]);
+
+        var options = {
+          height: 400,
+          vAxis: {title: 'Conversions'},
+          hAxis: {title: 'Date'},
+          seriesType: 'bars',
+          series: {5: {type: 'line'}},
+          animation: {
+                duration: 1000,
+                startup: true,
+                easing: 'out'
+            }
+        };
+
+        var chart = new google.visualization.ComboChart(document.getElementById('media_chart'));
+        chart.draw(data, options);
+      }
       
       function drawDailyTraffic() {
       var data = new google.visualization.DataTable();
@@ -49,121 +187,69 @@ $(window).resize(function(){
           position: 'bottom'
         },
         chartArea: {width: '80%', height: '70%'},
+        animation: {
+                duration: 1000,
+                startup: true,
+                easing: 'out'
+            }
       };
       var chart1 = new google.visualization.LineChart(document.getElementById('demochart_div'));
       chart1.draw(data, options);
-      var chart2 = new google.visualization.LineChart(document.getElementById('demochart_div2'));
-      chart2.draw(data, options);
     }
 
     
       
       // Callback that draws the pie chart for Sarah's pizza.
-      function drawSarahChart() {
+      function drawAgeChart() {
 
         // Create the data table for Sarah's pizza.
         var data2 = new google.visualization.DataTable();
         data2.addColumn('string', 'Topping');
         data2.addColumn('number', 'Slices');
         data2.addRows([
-          ['Mushrooms', 1],
-          ['Onions', 1],
-          ['Olives', 2],
-          ['Zucchini', 2],
-          ['Pepperoni', 1]
+          ['18-24', 120423],
+          ['25-34', 293819],
+          ['35-44', 189203],
+          ['45-54', 103244],
+          ['55-64', 64721],
+          ['65+', 55261]
         ]);
 
         // Set options for Sarah's pie chart.
-        var options = {title:'How Much Pizza Sarah Ate Last Night',
-                       height:400,
-                       is3D: true};
-
-        // Instantiate and draw the chart for Sarah's pizza.
-        var chart1 = new google.visualization.PieChart(document.getElementById('Sarah_chart_div'));
-        var chart2 = new google.visualization.PieChart(document.getElementById('Sarah_chart_div2'));
-        chart1.draw(data2, options);
-        chart2.draw(data2, options);
-      }
-      // Callback that draws timeline chart.
-      function drawTimeLineChart() {
-        var container = document.getElementById('timeline');
-        var chart = new google.visualization.Timeline(container);
-        var dataTable = new google.visualization.DataTable();
-
-        dataTable.addColumn({ type: 'string', id: 'President' });
-        dataTable.addColumn({ type: 'date', id: 'Start' });
-        dataTable.addColumn({ type: 'date', id: 'End' });
-        dataTable.addRows([
-          [ 'Washington', new Date(1789, 3, 30), new Date(1797, 2, 4) ],
-          [ 'Adams',      new Date(1797, 2, 4),  new Date(1801, 2, 4) ],
-          [ 'Jefferson',  new Date(1801, 2, 4),  new Date(1809, 2, 4) ]]);
-
-        chart.draw(dataTable);
-      }
-      
-      function drawLineChart(){
-      var data = new google.visualization.DataTable();
-      data.addColumn('number', 'Day');
-      data.addColumn('number', 'Guardians of the Galaxy');
-      data.addColumn('number', 'The Avengers');
-      data.addColumn('number', 'Transformers: Age of Extinction');
-
-      data.addRows([
-        [1,  37.8, 80.8, 41.8],
-        [2,  30.9, 69.5, 32.4],
-        [3,  25.4,   57, 25.7],
-        [4,  11.7, 18.8, 10.5],
-        [5,  11.9, 17.6, 10.4],
-        [6,   8.8, 13.6,  7.7],
-        [7,   7.6, 12.3,  9.6],
-        [8,  12.3, 29.2, 10.6],
-        [9,  16.9, 42.9, 14.8],
-        [10, 12.8, 30.9, 11.6],
-        [11,  5.3,  7.9,  4.7],
-        [12,  6.6,  8.4,  5.2],
-        [13,  4.8,  6.3,  3.6],
-        [14,  4.2,  6.2,  3.4]
-      ]);
-
-      var options = {
-        chart: {
-          title: 'Box Office Earnings in First Two Weeks of Opening',
-          subtitle: 'in millions of dollars (USD)'
-        },
-      };
-      var chart = new google.charts.Line(document.getElementById('line_chart'));
-
-      chart.draw(data, google.charts.Line.convertOptions(options));
-      }
-
-      function drawDemoVisualization() {
-        // Some raw data (not necessarily accurate)
-        var data1 = google.visualization.arrayToDataTable([
-          ['日期', 'EDM', 'Google Display', 'Facebook', 'Line', 'Google Search', 'Others'],
-          ['03/11',  165,      938,         522,             998,           450,      614.6],
-          ['03/12',  135,      1120,        599,             1268,          288,      682],
-          ['03/13',  157,      1167,        587,             807,           397,      623],
-          ['03/14',  139,      1110,        615,             968,           215,      609.4],
-          ['03/15',  136,      691,         629,             1026,          366,      569.6]
-        ]);
-
         var options = {
-          title : '每日進站流量',
-          vAxis: {title: '流量'},
-          hAxis: {title: '日期'},
-          seriesType: 'bars',
-          series: {5: {type: 'line'}},
-          crosshair: { trigger: 'both' },
           height:400,
-          animation:{
-          duration: 1000,
-          easing: 'out',
-          startup: true
-          }
+          chartArea:{left:'10%',top:'5%',width:'80%',height:'80%'},
+          legend: {position: 'right', maxLines: 6, alignment: 'center'},
+          pieHole: 0.5
         };
 
-        var chart1 = new google.visualization.ComboChart(document.getElementById('none'));
-        var chart2 = new google.visualization.ComboChart(document.getElementById('none'));
-        chart1.draw(data1, options);
-        chart2.draw(data1, options);
+        // Instantiate and draw the chart for Sarah's pizza.
+        var chart = new google.visualization.PieChart(document.getElementById('Demo_chart_div'));
+        chart.draw(data2, options);
       }
+
+      function drawGenderChart() {
+
+        // Create the data table for Sarah's pizza.
+        var data2 = new google.visualization.DataTable();
+        data2.addColumn('string', 'Topping');
+        data2.addColumn('number', 'Slices');
+        data2.addRows([
+          ['男性', 190423],
+          ['女性', 203819],
+          ['未知', 59203]
+        ]);
+
+        // Set options for Sarah's pie chart.
+        var options = {
+          height:400,
+          chartArea:{left:'10%',top:'5%',width:'80%',height:'80%'},
+          legend: {position: 'right', maxLines: 6, alignment: 'center'},
+          pieHole: 0.5
+        };
+
+        // Instantiate and draw the chart for Sarah's pizza.
+        var chart = new google.visualization.PieChart(document.getElementById('Demo_chart_div2'));
+        chart.draw(data2, options);
+      }
+            

@@ -99,6 +99,10 @@ body {
 	display: flex; 
 	flex-direction: row;
 }
+#chart_area_3 {
+	display: flex; 
+	flex-direction: row;
+}
 #timeline {
 	width: 100%; 
 	left: 5%;
