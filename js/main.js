@@ -15,6 +15,50 @@ $(window).resize(function(){
       google.charts.setOnLoadCallback(drawTreemapChart);
       google.charts.setOnLoadCallback(drawBarchart);
 
+      
+        function animateValue(id, start, end, duration) {
+        var obj = document.getElementById(id);
+        var range = end - start;
+    // no timer shorter than 50ms (not really visible any way)
+        var minTimer = 50;
+    // calc step time to show all interediate values
+        var stepTime = Math.abs(Math.floor(duration / range));
+    
+    // never go below minTimer
+        stepTime = Math.max(stepTime, minTimer);
+    
+    // get current time and calculate desired end time
+        var startTime = new Date().getTime();
+        var endTime = startTime + duration;
+        var timer;
+    
+        function run() {
+        var now = new Date().getTime();
+        var remaining = Math.max((endTime - now) / duration, 0);
+        var value = Math.round(end - (remaining * range));
+        if (id == 'sc5v'){obj.innerHTML = 'NT$' + value;}
+        else {obj.innerHTML = value;}
+        
+        if (value == end) {
+            clearInterval(timer);
+        }
+    }
+    
+    timer = setInterval(run, stepTime);
+    run();
+    }
+
+      $(window).ready(function(){
+      animateValue('sc1v',0, 101432119, 2000);  
+      animateValue('sc2v',0, 129789, 2000);
+      animateValue('sc3v',0, 98442, 2000);
+      animateValue('sc4v',0, 2038, 2000);
+      animateValue('sc5v',0, 598132, 2000);
+    })
+      
+        
+
+
       function drawBarchart() {
       var data = google.visualization.arrayToDataTable([
         ['頁面', '瀏覽數'],
@@ -28,6 +72,11 @@ $(window).resize(function(){
       var options = {
         chartArea: {width: '50%'},
         height: 400,
+        animation: {
+                duration: 1000,
+                startup: true,
+                easing: 'out'
+            },
         hAxis: {
           title: '瀏覽數',
           minValue: 0,
